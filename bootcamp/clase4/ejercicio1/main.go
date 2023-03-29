@@ -10,9 +10,12 @@ type Product struct {
 	Category    string
 }
 
-func (p Product) Save() []Product {
-	var newP = append(Products, p)
-	return newP
+var Products = []Product{
+	{1, "hola", 10.0, "mundo", "ok"},
+}
+
+func (p Product) Save() {
+	Products = append(Products, p)
 }
 
 func (p Product) GetAll() {
@@ -28,13 +31,9 @@ func getById(id int) Product {
 	return Product{}
 }
 
-var Products = []Product{
-	{1, "hola", 10.0, "mundo", "ok"},
-}
-
 func main() {
 	p := Product{2, "hola", 10.0, "mundo", "ok"}
-	Products = p.Save()
+	p.Save()
 	p.GetAll()
 	fmt.Println(getById(1))
 	fmt.Println(getById(2))
